@@ -13,7 +13,7 @@ df = ds["train"].to_pandas()
 label_map = {0: "negative", 1: "neutral", 2: "positive"}
 ground_truth = [label_map[l] for l in df["label"]]
 
-# 3. Load FinBERT exactly the same way your analyse.py does
+# 3. Load FinBERT like in analyse.py 
 finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone', num_labels=3)
 tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
 classifier = pipeline("sentiment-analysis", model=finbert, tokenizer=tokenizer)
