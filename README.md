@@ -24,10 +24,10 @@ Below are two real outputs from ToneDelta using Microsoft's earnings call transc
 Q2 2025 showed stronger consistency between the sections, earning it a strong credibility score of 88.77 while Q1 presented a slight tone shift resulting in a lower score of 79.14, both easily detected by ToneDelta.
 
 ## Installation
-pip3 install -r requirements.txt
+```pip3 install -r requirements.txt```
 
 ## Usage
-python3 main.py --ticker MSFT --year 2025 --quarter 1
+```python3 main.py --ticker MSFT --year 2025 --quarter 1```
 
 ## How It Works
 **Overall workflow**: *fetch → chunk → FinBERT inference → KL divergence → credibility score → consolidate and print report*
