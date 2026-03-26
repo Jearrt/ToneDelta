@@ -1,8 +1,9 @@
 # python3 evaluate.py
 
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import classification_report, accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 from transformers import BertTokenizer, BertForSequenceClassification, pipeline
 from datasets import load_dataset
+import matplotlib.pyplot as plt
 
 # 1. Load Financial PhraseBank
 ds = load_dataset("gtfintechlab/financial_phrasebank_sentences_allagree", "5768")
@@ -26,3 +27,11 @@ print(f"\nAccuracy: {accuracy_score(ground_truth, predictions):.4f}")
 print("\nDetailed Report:")
 print()
 print(classification_report(ground_truth, predictions))
+
+# For the confusion matrix (to see where each misclassification landed)
+labels = ["negative", "neutral", "positive"]
+cm = confusion_matrix(ground_truth, predictions, labels=labels)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
+disp.plot()
+plt.savefig("confusion_matrix.png")
+print(cm)
