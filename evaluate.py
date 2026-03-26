@@ -24,4 +24,5 @@ predictions = [classifier(text, truncation=True, max_length=512)[0]["label"].low
 # 5. Print results
 print(f"\nAccuracy: {accuracy_score(ground_truth, predictions):.4f}")
 print("\nDetailed Report:")
+print()
 print(classification_report(ground_truth, predictions))
